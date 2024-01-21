@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import SpotPage from "./components/SpotPage";
+import PostPage from "./components/PostPage";
+import ContactPage from "./components/ContactPage";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">ホーム</Link>
+            </li>
+            <li>
+              <Link to="/spot">スポット詳細</Link>
+            </li>
+            <li>
+              <Link to="/post">投稿</Link>
+            </li>
+            <li>
+              <Link to="/contact">お問い合わせ</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <hr />
+
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/spot" element={<SpotPage />} />
+          <Route path="/post" element={<PostPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
